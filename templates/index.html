@@ -103,9 +103,9 @@
                     for(let i = 0; i < rows.length; i++) {
                         let name = rows[i]['name']
                         let comment = rows[i]['comment']
-                        let num = rows[i]['num'] //writer도 구분을 하기위함.
-
-                        let temp_html = `<div class="card">
+                        let num = rows[i]['num'] //writer도 구분을 하기위함
+                        let id = `card-${num}`
+                        let temp_html = `<div class="card" id="${id}">
                                             <div class="card-body">
                                                 <blockquote class="blockquote mb-0">
                                                     <p>${comment}</p>
@@ -122,14 +122,14 @@
         }
         // modify(수정 버튼!)
         function modify_comment(num) {
-            $('.mypost').empty()
+            $(`#card-${num}`).empty()
             let temp_html = `<div class="form-floating">
                                 <textarea class="form-control" placeholder="Leave a comment here" id="modify_comment"
                                   style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">수정하기</label>
                             </div>
                             <button onclick="modify_comment_post('${num}')" type="button" class="btn btn-dark">수정완료</button>`
-            $('.mypost').append(temp_html)
+            $(`#card-${num}`).append(temp_html)
         }
 
         // modify(수정 완료 버튼!)
